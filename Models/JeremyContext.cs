@@ -40,7 +40,7 @@ namespace RocketApi.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;database=mathieu_app;user=codeboxx;pwd=Codeboxx1!;");
+                optionsBuilder.UseMySql("server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;database=jeremy;user=codeboxx;pwd=Codeboxx1!;");
             }
         }
 
@@ -685,6 +685,72 @@ namespace RocketApi.Models
                 entity.Property(e => e.UserId)
                     .HasColumnName("user_id")
                     .HasColumnType("bigint(20)");
+            });
+
+            modelBuilder.Entity<Interventions>(entity =>
+            {
+                entity.ToTable("interventions");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.Author_id)
+                    .HasColumnName("author_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Customer_id)
+                    .HasColumnName("customer_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Building_id)
+                    .HasColumnName("building_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Battery_id)
+                    .HasColumnName("battery_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Column_id)
+                    .HasColumnName("column_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Elevator_id)
+                    .HasColumnName("elevator_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Employee_id)
+                    .HasColumnName("employee_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Start)
+                    .HasColumnName("start")
+                    .HasColumnType("Datetime()");
+
+                entity.Property(e => e.End)
+                    .HasColumnName("end")
+                    .HasColumnType("Datetime()");
+
+                entity.Property(e => e.Result)
+                    .HasColumnName("result")
+                    .HasColumnType("varchar(255)");
+
+                entity.Property(e => e.Report)
+                    .HasColumnName("report")
+                    .HasColumnType("text");
+
+                entity.Property(e => e.Status)
+                    .HasColumnName("status")
+                    .HasColumnType("varchar(255)");
+
+                 entity.Property(e => e.Created_At)
+                    .HasColumnName("created_at")
+                    .HasColumnType("datetime");
+
+                 entity.Property(e => e.Updated_At)
+                    .HasColumnName("updated_at")
+                    .HasColumnType("datetime");
+
             });
 
             modelBuilder.Entity<Leads>(entity =>

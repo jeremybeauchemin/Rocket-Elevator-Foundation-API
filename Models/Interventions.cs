@@ -6,19 +6,21 @@ namespace RocketApi.Models
 
   public partial class Interventions
     {
-        public int customer_id { get; set; }
-        public int building_id { get; set; }
-        public int battery_id { get; set; }
-        public int column_id { get; set; }
-        public int elevator_id { get; set; }
-        public int employee_id { get; set; }
-        public DateTime start { get; set; }
-        public DateTime end { get; set; } 
-        public string result { get; set; } 
-        public string report { get; set; }
-        public string status { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; } 
+        public long Id { get; set; }
+        public int? Author_id { get; set; }
+        public int Customer_id { get; set; }
+        public int Building_id { get; set; }
+        public int Battery_id { get; set; }
+        public int Column_id { get; set; }
+        public int Elevator_id { get; set; }
+        public int Employee_id { get; set; }
+        public DateTime? Start { get; set; }
+        public DateTime? End { get; set; } 
+        public string Result { get; set; } 
+        public string Report { get; set; }
+        public string Status { get; set; }
+        public DateTime Created_At { get; set; }
+        public DateTime Updated_At { get; set; } 
     }
 
 

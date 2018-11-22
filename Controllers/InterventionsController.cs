@@ -26,21 +26,22 @@ namespace RocketApi.Controllers{
         public ActionResult<List<Interventions>> Get()
         {
             return _context.Interventions.ToList();
+            }
 
-
-        [HttpGet("pending")]
-        public ActionResult<List<Interventions>> Get(string pending)
+        [HttpGet("Status")]
+        public ActionResult<List<Interventions>> Get(string Status)
         {
-            var item = _context.Interventions.Where(s => s.pending != "Active");
+            var item = _context.Interventions.Where(s => s.Status == Status && s.Start == null );
             if (item == null)
             {
                 return NotFound();
             }
             var res = new JObject();
             // res["id"] = item.Id;
-            // res["pending"] = item.pending;
+            // res["status"] = item.status;
             return item.ToList();
         }
+    }
 
 
 
