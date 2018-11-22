@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace RocketApi.Models
 {
-    public partial class mathieu_appContext : DbContext
+    public partial class jeremyContext : DbContext
     {
-        public mathieu_appContext()
+        public jeremyContext()
         {
         }
 
-        public mathieu_appContext(DbContextOptions<mathieu_appContext> options)
+        public jeremyContext(DbContextOptions<jeremyContext> options)
             : base(options)
         {
         }
@@ -30,6 +30,7 @@ namespace RocketApi.Models
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Elevators> Elevators { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
+        public virtual DbSet<Interventions> Interventions {get; set; }
         public virtual DbSet<Leads> Leads { get; set; }
         public virtual DbSet<Quotes> Quotes { get; set; }
         public virtual DbSet<SchemaMigrations> SchemaMigrations { get; set; }

@@ -12,8 +12,8 @@ namespace RocketApi.Controllers
     [ApiController]
     public class BuildingsController : ControllerBase
     {
-        private readonly mathieu_appContext _context;
-        public BuildingsController(mathieu_appContext context)
+        private readonly jeremyContext _context;
+        public BuildingsController(jeremyContext context)
         {
             _context = context;
         }

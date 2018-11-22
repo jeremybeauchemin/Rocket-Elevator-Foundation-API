@@ -27,8 +27,8 @@ namespace RocketApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<mathieu_appContext>(optionsBuilder => 
-                optionsBuilder.UseMySql("server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;database=mathieu_app;user=codeboxx;pwd=Codeboxx1!;"));
+            services.AddDbContext<jeremyContext>(optionsBuilder => 
+                optionsBuilder.UseMySql("server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;database=jeremy;user=codeboxx;pwd=Codeboxx1!;"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

@@ -20,7 +20,7 @@ namespace RocketApi
         {
             CreateWebHostBuilder(args).Build().Run();
 
-            var dbContext = new mathieu_appContext();
+            var dbContext = new jeremyContext();
             var addresses = dbContext.Addresses.ToList();
             foreach(var c in addresses) {
                 System.Console.WriteLine($"ID:{c.Id} Name:{c.City}");

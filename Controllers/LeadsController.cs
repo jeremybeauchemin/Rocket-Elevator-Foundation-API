@@ -14,9 +14,9 @@ namespace RocketApi.Controllers
     [ApiController]
     public class LeadsController : ControllerBase
     {
-        private readonly mathieu_appContext _context;
+        private readonly jeremyContext _context;
 
-        public LeadsController(mathieu_appContext context)
+        public LeadsController(jeremyContext context)
         {
             _context = context;
         }
