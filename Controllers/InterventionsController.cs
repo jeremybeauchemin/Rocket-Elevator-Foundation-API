@@ -25,24 +25,44 @@ namespace RocketApi.Controllers{
         [HttpGet]
         public ActionResult<List<Interventions>> Get()
         {
-            return _context.Interventions.ToList();
+            return _context.Interventions.Where(s => s.Start == null && s.Status == "pending").ToList();
             }
 
-        [HttpGet("Status")]
-        public ActionResult<List<Interventions>> Get(string Status)
+        // [HttpGet("Status")]
+        //     public ActionResult<Interventions> Get(long Status){
+        // {
+        //     var item = _context.Interventions.Find(Status);
+        //     if (item == null)
+        //     {
+        //         return NotFound();
+        //     }
+        // }
+        //     }
+
+     // POST api/values
+        [HttpPost]
+        public void Post([FromBody] string value)
         {
-            var item = _context.Interventions.Where(s => s.Status == Status && s.Start == null );
-            if (item == null)
+        }
+
+        // PUT api/values/5
+        [HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        public IActionResult Update(long id, Elevators item)
+        {
+            var change = _context.Elevators.Find(id);
+            if (change == null)
             {
                 return NotFound();
             }
-            var res = new JObject();
-            // res["id"] = item.Id;
-            // res["status"] = item.status;
-            return item.ToList();
+            //change.IsComplete = item.IsComplete;
+            change.Status = item.Status;
+
+            _context.Elevators.Update(change);
+            _context.SaveChanges();
+            return NoContent();
         }
     }
-
 
 
 }

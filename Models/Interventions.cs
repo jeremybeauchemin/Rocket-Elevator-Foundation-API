@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace RocketApi.Models
 {
-
   public partial class Interventions
     {
         public long Id { get; set; }
@@ -22,6 +21,4 @@ namespace RocketApi.Models
         public DateTime Created_At { get; set; }
         public DateTime Updated_At { get; set; } 
     }
-
-
 }

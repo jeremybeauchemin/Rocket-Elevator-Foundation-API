@@ -725,11 +725,11 @@ namespace RocketApi.Models
 
                 entity.Property(e => e.Start)
                     .HasColumnName("start")
-                    .HasColumnType("Datetime()");
+                    .HasColumnType("Datetime");
 
                 entity.Property(e => e.End)
                     .HasColumnName("end")
-                    .HasColumnType("Datetime()");
+                    .HasColumnType("Datetime");
 
                 entity.Property(e => e.Result)
                     .HasColumnName("result")
