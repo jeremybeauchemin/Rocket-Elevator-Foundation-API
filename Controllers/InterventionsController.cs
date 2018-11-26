@@ -23,7 +23,7 @@ namespace RocketApi.Controllers{
 
         // GET api/values
         [HttpGet]
-        public ActionResult<List<Interventions>> Get()
+        public ActionResult<List<Interventions>> Get( long Status)
         {
             return _context.Interventions.Where(s => s.Start == null && s.Status == "pending").ToList();
             }
@@ -40,29 +40,51 @@ namespace RocketApi.Controllers{
         //     }
 
      // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
+       
         // PUT api/values/5
-        [HttpPut("{id}")]
+
+        [HttpPut("{id}", Name = "PutInterventionsStatus")]
         //public void Put(int id, [FromBody] string value)
-        public IActionResult Update(long id, Elevators item)
+        public string Update(long id, [FromBody] JObject body)
         {
-            var change = _context.Elevators.Find(id);
-            if (change == null)
+            var interventions = _context.Interventions.Find(id);
+            if (interventions == null)
             {
-                return NotFound();
+                return "Return a valid Id";
             }
-            //change.IsComplete = item.IsComplete;
-            change.Status = item.Status;
+            
+            var previous_status = interventions.Status;
+            var status = (string)body.SelectToken("status");
+            if (status == "inProgess")
+            {
+                DateTime time = DateTime.Now;
+                interventions.Status = status;
+                interventions.Start = DateTime.Now;
+                interventions.Updated_At = DateTime.Now;
+                _context.Interventions.Update(interventions);
+                _context.SaveChanges();
+                return "Interventions number # " + interventions.Id + "Has now changed status from " + previous_status + "to" + status +".";
+            }
+            {
+              if (status == "complete")
+            {
+                DateTime time = DateTime.Now;
+                interventions.Status = status;
+                interventions.End = DateTime.Now;
+                interventions.Updated_At = DateTime.Now;
+                _context.Interventions.Update(interventions);
+                _context.SaveChanges();
+                return "Interventions number # " + interventions.Id + " Has now changed status from " + previous_status + " to " + status + ".";  
+            }
 
-            _context.Elevators.Update(change);
-            _context.SaveChanges();
-            return NoContent();
-        }
-    }
+            else
+            {
+                return "Invalid Status";
+            }
+            }
+         }
 
 
+    }   
 }
+
