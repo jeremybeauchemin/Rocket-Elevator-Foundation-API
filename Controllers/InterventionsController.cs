@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using RocketApi.Models;
 using Microsoft.EntityFrameworkCore;
 
- 
 namespace RocketApi.Controllers{
 
     [Route("api/Interventions")]
@@ -27,22 +26,6 @@ namespace RocketApi.Controllers{
         {
             return _context.Interventions.Where(s => s.Start == null && s.Status == "pending").ToList();
             }
-
-        // [HttpGet("Status")]
-        //     public ActionResult<Interventions> Get(long Status){
-        // {
-        //     var item = _context.Interventions.Find(Status);
-        //     if (item == null)
-        //     {
-        //         return NotFound();
-        //     }
-        // }
-        //     }
-
-     // POST api/values
-       
-        // PUT api/values/5
-
         [HttpPut("{id}", Name = "PutInterventionsStatus")]
         //public void Put(int id, [FromBody] string value)
         public string Update(long id, [FromBody] JObject body)
@@ -52,7 +35,6 @@ namespace RocketApi.Controllers{
             {
                 return "Return a valid Id";
             }
-            
             var previous_status = interventions.Status;
             var status = (string)body.SelectToken("status");
             if (status == "inProgess")
@@ -76,15 +58,12 @@ namespace RocketApi.Controllers{
                 _context.SaveChanges();
                 return "Interventions number # " + interventions.Id + " Has now changed status from " + previous_status + " to " + status + ".";  
             }
-
             else
             {
                 return "Invalid Status";
             }
             }
          }
-
-
     }   
 }
 
