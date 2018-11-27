@@ -45,7 +45,7 @@ namespace RocketApi.Controllers{
                 interventions.Updated_At = DateTime.Now;
                 _context.Interventions.Update(interventions);
                 _context.SaveChanges();
-                return "Interventions number # " + interventions.Id + "Has now changed status from " + previous_status + "to" + status +".";
+                return "Interventions #" + interventions.Id + "Has now changed status from " + previous_status + "to" + status +".";
             }
             {
               if (status == "complete")
@@ -56,7 +56,7 @@ namespace RocketApi.Controllers{
                 interventions.Updated_At = DateTime.Now;
                 _context.Interventions.Update(interventions);
                 _context.SaveChanges();
-                return "Interventions number # " + interventions.Id + " Has now changed status from " + previous_status + " to " + status + ".";  
+                return "Interventions #" + interventions.Id + " Has now changed status from " + previous_status + " to " + status + ".";  
             }
             else
             {
