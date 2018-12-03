@@ -53,7 +53,7 @@ namespace RocketApi.Controllers{
                 DateTime time = DateTime.Now;
                 interventions.Status = status;
                 interventions.End = DateTime.Now;
-                interventions.Updated_At = DateTime.Now;
+                interventions.Created_At = DateTime.Now;
                 _context.Interventions.Update(interventions);
                 _context.SaveChanges();
                 return "Interventions #" + interventions.Id + " Has now changed status from " + previous_status + " to " + status + ".";  
